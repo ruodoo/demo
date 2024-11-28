@@ -18,6 +18,9 @@ class User(models.Model):
         for user in self:
             if user.description and not re.match(r'^[\w \'_]+$', user.description):
                 raise ValueError(f'Description must be oneline, got `{user.description}`')
+            elif user.description == '':
+                raise ValueError('Description should not be empty')
+
 
 class Hobby(models.Model):
     _name = 'demo.hobby'
