@@ -19,7 +19,7 @@ class User(models.Model):
             vals["description"] = f"I'm {vals['name']}"
         return super(User, self).create(vals)
 
-    @api.constains("description")
+    @api.constrains("description")
     def _description_is_required(self):
         for user in self:
             if not user.description:
