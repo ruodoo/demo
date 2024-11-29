@@ -12,12 +12,22 @@ class User(models.Model):
         if 'description' not in vals:
             vals['description'] = f"I'm {vals['name']}"
         return super(User, self).create(vals)
-                                        
+    
+    @description.setter
+    def description(self, value):
+        self['description'] = value
+    
     @api.constrains('description')
     def _description_is_one_line(self):
         for user in self:
             if user.description and not re.match(r'^[\w \'_]+$', user.description):
                 raise ValueError(f'Description must be oneline, got `{user.description}`')
+
+    @api.constrains('description')
+    def _description_is_required(self):
+        for user in self:
+            if not user.description:
+                raise NotNullViolation('Description is required')
 
 class Hobby(models.Model):
     _name = 'demo.hobby'
