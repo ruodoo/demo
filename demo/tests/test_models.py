@@ -29,7 +29,7 @@ class TestUsers(TransactionCase):
                     'name': 'Marie-Noël',
                     'login': 'mnv',
                 })
-                user.description = None
+                user.description(error_catcher.exception).args[0], Like("Description is required ...")
 
 
     def test_description_one_line(self):
