@@ -8,6 +8,7 @@ class User(models.Model):
     hobbies = fields.Many2many('demo.hobby', string='Hobbies', relation='demo_user_hobby', column1='user_id', column2='hobby_id')
     description = fields.Char(string='Description')
 
+    
     def create(self, vals):
         if 'description' not in vals:
             vals['description'] = f"I'm {vals['name']}"
@@ -16,7 +17,7 @@ class User(models.Model):
     @api.constrains('description')
     def _description_is_one_line(self):
         for user in self:
-            if user.description and not re.match(r'^[\w \'_]+$', user.description):
+            if user.description and not re.match(r'^[\w \'_-]+$', user.description):
                 raise ValueError(f'Description must be oneline, got `{user.description}`')
 
 class Hobby(models.Model):
