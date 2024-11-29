@@ -23,12 +23,11 @@ class TestUsers(TransactionCase):
         self.env.flush_all()
 
     def test_description_is_required(self):
-
-                user = self.env['res.users'].create({
-                    'name': 'Marie-Noël',
-                    'login': 'mnv',
-                })
-                user.description = None
+        user = self.env['res.users'].create({
+                'name': 'Marie-Noël',
+                'login': 'mnv',
+            })
+            user.description = None
 
 
     def test_description_one_line(self):
