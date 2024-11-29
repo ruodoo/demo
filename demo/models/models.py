@@ -12,7 +12,7 @@ class User(models.Model):
         column1="user_id",
         column2="hobby_id",
     )
-    description = fields.Char(string="Description")
+    description = fields.Char(string="Description", required=True)
 
     def create(self, vals):
         if "description" not in vals:
