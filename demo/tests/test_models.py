@@ -27,7 +27,7 @@ class TestUsers(TransactionCase):
                 'name': 'Marie-Noël',
                 'login': 'mnv',
             })
-            user.description = None
+        user.description = None
 
 
     def test_description_one_line(self):
