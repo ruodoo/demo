@@ -30,7 +30,7 @@ class TestUsers(TransactionCase):
                     'login': 'mnv',
                     
                 })
-                #user.description = None
+                user.description = None
 
 
     def test_description_one_line(self):
