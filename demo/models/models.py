@@ -10,14 +10,16 @@ class User(models.Model):
 
     def create(self, vals):
         if 'description' not in vals:
-            vals['description'] = f"I'm {vals['name']}"
+            raise ValueError(f'Description is require ...')
         return super(User, self).create(vals)
                                         
     @api.constrains('description')
     def _description_is_one_line(self):
         for user in self:
+
             if user.description and not re.match(r'^[\w \'_]+$', user.description):
-                raise ValueError(f'Description is require ...`')
+                raise ValueError(f'Description must be oneline, got `{user.description}`')
+            
 
 class Hobby(models.Model):
     _name = 'demo.hobby'
