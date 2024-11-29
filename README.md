@@ -1,1 +1,1 @@
-c'est Thanatos
+c'est Thanatos.
