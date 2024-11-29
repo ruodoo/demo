@@ -24,12 +24,13 @@ class TestUsers(TransactionCase):
 
     def test_description_is_required(self):
         #with mute_logger('odoo.sql_db'):
-            #with self.assertRaises(Exception):
-        user = self.env['res.users'].create({
-            'name': 'Marie-Noël',
-            'login': 'mnv',
-        })
-        user.description = None
+        with self.assertRaises(Exception) as error_catcher:
+            user = self.env['res.users'].create({
+                'name': 'Marie-Noël',
+                'login': 'mnv',
+            })
+            user.description = None
+        self.assertEqual(error_catcher.exception.args[0], Like("Description is require ..."))
 
 
     def test_description_one_line(self):
