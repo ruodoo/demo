@@ -29,8 +29,7 @@ class TestUsers(TransactionCase):
                 'name': 'Marie-Noël',
                 'login': 'mnv',
             })
-            user.description = None
-        self.assertEqual(error_catcher.exception.args[0], Like("Description is require ..."))
+        self.assertEqual(error_catcher.exception.args[0], "Description is required")
 
 
     def test_description_one_line(self):

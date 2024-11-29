@@ -10,7 +10,7 @@ class User(models.Model):
 
     def create(self, vals):
         if 'description' not in vals:
-            raise ValueError(f'Description is require ...')
+            raise ValueError('Description is required')
         return super(User, self).create(vals)
                                         
     @api.constrains('description')
