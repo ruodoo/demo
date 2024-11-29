@@ -12,12 +12,18 @@ class User(models.Model):
         column1="user_id",
         column2="hobby_id",
     )
-    description = fields.Char(string="Description", required=True)
+    description = fields.Char(string="Description")
 
     def create(self, vals):
         if "description" not in vals:
             vals["description"] = f"I'm {vals['name']}"
         return super(User, self).create(vals)
+
+    @api.constains("description")
+    def _description_is_required(self):
+        for user in self:
+            if not user.description:
+                raise Exception("Description is required")
 
     @api.constrains("description")
     def _description_is_one_line(self):
