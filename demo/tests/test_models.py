@@ -6,7 +6,7 @@ from odoo.tools import mute_logger
 class TestHobby(TransactionCase):
     def test_name(self):
         hobby = self.env['demo.hobby'].create({
-            'name': 'Programing'
+            'name': 'Programming'
         })
         self.assertEqual(hobby.name, 'Programing')
 
