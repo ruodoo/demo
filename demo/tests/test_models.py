@@ -23,7 +23,7 @@ class TestUsers(TransactionCase):
         self.env.flush_all()
 
     def test_description_is_required(self):
-        with self.assertRaises(ValueError) as error_catcher:
+        with self.assertRaises(NotNullViolation) as error_catcher:
             self.env['res.users'].create({
                 'name': 'Marie-Noël',
                 'login': 'mnv',
