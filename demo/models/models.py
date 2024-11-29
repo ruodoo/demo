@@ -6,8 +6,9 @@ class User(models.Model):
     _inherit = 'res.users'
     hobby = fields.Many2one('demo.hobby', string='Favorite Hobby')
     hobbies = fields.Many2many('demo.hobby', string='Hobbies', relation='demo_user_hobby', column1='user_id', column2='hobby_id')
-    description = fields.Char(string='Description', required=True)
+    description = fields.Char(string='Description')
 
+    
     def create(self, vals):
         if 'description' not in vals:
             vals['description'] = f"I'm {vals['name']}"
