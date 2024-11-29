@@ -8,7 +8,7 @@ class TestHobby(TransactionCase):
         hobby = self.env['demo.hobby'].create({
             'name': 'Programming'
         })
-        self.assertEqual(hobby.name, 'Programing')
+        self.assertEqual(hobby.name, 'Programming')
 
     def test_name_is_required(self):
         with self.assertRaises(NotNullViolation):
@@ -30,7 +30,6 @@ class TestUsers(TransactionCase):
                     'login': 'mnv',
                 })
                 user.description = None
-
 
     def test_description_one_line(self):
         with self.assertRaises(ValueError) as error_catcher:
