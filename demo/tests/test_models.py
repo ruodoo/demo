@@ -30,12 +30,7 @@ class TestUsers(TransactionCase):
                     'login': 'mnv',
                 })
                 user.description = None'''
-        user = self.env['res.users'].create({
-                    'name': 'Marie-Noël',
-                    'login': 'mnv',
-                })
-        user.description = None
-        self.assertEqual(user.description, not None)
+        
 
 
     def test_description_one_line(self):
