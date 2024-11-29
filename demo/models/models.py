@@ -16,6 +16,7 @@ class User(models.Model):
     @api.constrains('description')
     def _description_is_one_line(self):
         for user in self:
+            print(user.description)
             if '\n' in user.description:
                 raise ValueError(f'Description must be oneline, got `{user.description}`')
 
