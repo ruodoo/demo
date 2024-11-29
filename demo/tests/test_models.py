@@ -1,6 +1,6 @@
-from odoo.tests import TransactionCase, Like
-from psycopg2.errors import NotNullViolation
+from odoo.tests import Like, TransactionCase
 from odoo.tools import mute_logger
+from psycopg2.errors import NotNullViolation
 
 
 class TestHobby(TransactionCase):
@@ -8,7 +8,7 @@ class TestHobby(TransactionCase):
         hobby = self.env['demo.hobby'].create({
             'name': 'Programming'
         })
-        self.assertEqual(hobby.name, 'Programing')
+        self.assertEqual(hobby.name, 'Programming')
 
     def test_name_is_required(self):
         with self.assertRaises(NotNullViolation):
