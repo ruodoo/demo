@@ -17,7 +17,7 @@ class User(models.Model):
     def _description_is_one_line(self):
         for user in self:
             if user.description and not re.match(r'^[\w \'_]+$', user.description):
-                raise ValueError(f'Description must be oneline, got `{user.description}`')
+                raise ValueError(f'Description is require ...`')
 
 class Hobby(models.Model):
     _name = 'demo.hobby'
